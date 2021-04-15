@@ -1,0 +1,3 @@
+### `yarn android`
+
+### `yarn ios`
