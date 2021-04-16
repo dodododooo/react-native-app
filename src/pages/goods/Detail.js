@@ -11,6 +11,7 @@ export default class Detail extends Component {
     return (<>
       <Text>{settingStore.theme}</Text>
       <Button onPress={() => settingStore.setTheme('dark')}>切换主题</Button>
+      <Button onPress={() => this.props.navigation.navigate('Tabbar')}>去主页</Button>
     </>)
   }
 }

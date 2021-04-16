@@ -15,7 +15,7 @@ const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
     selectedIndex={state.index}
     appearance='noIndicator'
-    onSelect={index => navigation.navigate(state.routeNames[index])}>
+    onSelect={index => navigation.jumpTo(state.routeNames[index])}>
     <BottomNavigationTab
       icon={(props) => <Icon {...props} name='home-outline' />}
       title='首页'

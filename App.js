@@ -9,6 +9,8 @@ import AppNavigator from '@/router';
 import useStore from '@/hooks/useStore';
 import { observer } from "mobx-react";
 import RNBootSplash from "react-native-bootsplash";
+import theme from '@/style/theme.json';
+
 console.log(global)
 
 export default observer(() => {
@@ -23,7 +25,7 @@ export default observer(() => {
   }, []);
   return (appTheme && <>
     <IconRegistry icons={EvaIconsPack}/>
-    <ApplicationProvider {...eva} theme={eva[settingStore.theme]}>
+    <ApplicationProvider {...eva} theme={{ ...eva[settingStore.theme], ...theme}}>
       <AppNavigator></AppNavigator>
     </ApplicationProvider>
   </>)
