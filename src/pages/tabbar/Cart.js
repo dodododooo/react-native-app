@@ -1,6 +1,9 @@
 import React from 'react'
 import { Text } from 'react-native';
-export default function Cart() {
+import useBackHandler from '@/hooks/useBackHandler';
+
+export default function Cart({ navigation }) {
+  useBackHandler(navigation.isFocused);
   return (
     <Text>
       cart
