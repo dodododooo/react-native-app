@@ -9,8 +9,6 @@ import RNBootSplash from "react-native-bootsplash";
 import theme from '@/style/theme.json';
 import Toast from "react-native-fast-toast";
 
-console.log(global)
-
 export default observer(() => {
   const { settingStore } = useStore();
   const [appTheme, setAppTheme] = useState(null);

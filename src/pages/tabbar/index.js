@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Home from './Home';
 import Category from './Category';
@@ -6,7 +5,9 @@ import Cart from './Cart';
 import User from './User';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
+import { useBackHandler } from '@react-native-community/hooks';
 import { BackHandler } from 'react-native';
+
 const Tab = createBottomTabNavigator();
 
 const BottomTabBar = ({ navigation, state }) => (
@@ -34,6 +35,22 @@ const BottomTabBar = ({ navigation, state }) => (
 );
 
 export default ({ navigation }) => {
+  const lastBackTime = React.useRef(0);
+  useBackHandler(() => {
+    if (navigation.isFocused()) {
+      const now = Date.now();
+      const lastTime = lastBackTime.current;
+      lastBackTime.current = now;
+      if (now - lastTime > 1500) {
+        toast.show('再次返回退出应用');
+      } else {
+        BackHandler.exitApp();
+      }
+      return true;
+    }
+    lastBackTime.current = 0;
+    return false;
+  })
   return (
     <Tab.Navigator
       backBehavior="history"
