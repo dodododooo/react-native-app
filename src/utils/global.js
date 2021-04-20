@@ -13,6 +13,7 @@ global.mDevice = {
   platform: OS,
   isAndroid: OS === 'android',
   isIOS: OS === 'ios',
+  isWeb: OS === 'web',
   isIPhoneX,
   osVersion: Version,
 }
